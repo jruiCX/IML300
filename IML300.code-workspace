@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../Desktop/VSIML300"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "IML300"
+	}
+}

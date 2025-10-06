@@ -7,11 +7,20 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 200px;
             line-height: 1.6;
+            text-align:center;
+            
+            background-image: url("proj2assets/background.gif");
+            backdrop-filter: blur(5px);
+            backdrop-filter: grayscale(50%);
+            background-size: cover;
+            height: 100vh;
         }
+        
         h1 {
-            color: rebeccapurple;
+            color: rgb(76, 151, 221);
+            
         }
         p {
             font-size: 18px;
@@ -19,14 +28,43 @@
             color: rebeccapurple;
         }
         img {
+            
             max-width: 100%;
-            height: auto;
-            display: block;
+            height:80px;
+            display:block;
             margin-top: 20px;
+            margin-left: 48%;
+            filter: blur(5px);
+            filter: grayscale(100%);
+            transition: 0.5s;
+            
+        }
+        img:hover {
+            margin-left: 42%;
+            height:200px;
+            filter: blur(0px);
+            filter: grayscale(0%);
+        }
+        #good{
+            width:50px;
+            height:50px;
+            display:inline-block;
+            
+            margin-left: 0%;
+            filter: blur(0px);
+            filter: grayscale(0%);
         }
     </style>
 </head>
 <body>
+    <h1> Jason Rui<img id="good" src="proj2assets/good.gif" alt="good"></h1>
+    <p> Hi, my name is Jason, I'm learning to make a website</p>
+    <a href="https://drive.google.com/file/d/1SJwKflxQ8BOlQIToL80er3gID78Zisu8/view?usp=sharing">
+        This link to my art portfolio when I applying for college</a>
+    <img src="proj2assets/Rotating_earth_(large).gif"alt ="Rotating Earth">
+    <p> This is a rotating earth gif I found online</p>
+    <img src="proj2assets/colorspring.gif"alt ="clor spring">
+    <p> This is a color spring gif I found online</p>
     
 </body>
 </html>

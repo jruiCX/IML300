@@ -1,0 +1,1 @@
+This is my first time building a complete webpage. HTML feels quite different from the languages I've learned before—it seems more like a language humans would speak. It's really interesting. For this project, I basically just randomly added whatever came to mind and did a little formatting. Since the theme is FUN, I made the page colorful and added some fun GIFs.

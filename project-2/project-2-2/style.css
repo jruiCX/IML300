@@ -1,7 +1,7 @@
 body {
     transition: 30s;
     max-width: 800px;
-    margin: 20px auto;
+    margin: 20px 50px;
     padding: 20px;
     background-size: cover;
     background-position:top;
@@ -36,7 +36,7 @@ p {
     color: #333;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
     filter: blur(3px);
-    transition: 0.5s;
+    transition: 0.2s;
 }
 p:hover {
     color: #950098;
@@ -45,18 +45,48 @@ p:hover {
     filter: blur(0px);
 }
 h1, h2 {
-    transition: 1s;
-    color: #333;
+    transition: 0.2s;
+    color: #81a1ff;
     
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    filter: blur(3px);
+    /* filter: blur(3px); */
 }
-h1:hover, h2:hover {
+/* h1:hover, h2:hover {
     color: #0a9396;
     filter: blur(0px);
-}
+} */
 #sss{
     font-size: 1em;
     color: aliceblue;
     filter: blur(0px);
 }
+ @keyframes coolAnimation {
+        0% {
+          opacity: 0%;
+          line-height: 0.1;
+        }
+        50% {
+          opacity: 50%;
+          scale: 1.2;
+          margin-left: 100px;
+        }
+        100% {
+          opacity: 100%;
+          line-height: 1.5;
+          margin-left: 0px;
+        }
+        /* 100% {
+          opacity: 0%;
+          line-height: 0.1;
+          margin-left: 250px;
+        } */
+      }
+      p, h1, h2 {
+        animation: coolAnimation 3s ease-in-out;
+      }
+      * {
+        cursor: url('assets/wind-rose.png'), auto;
+        
+        
+      }
+      

@@ -37,8 +37,9 @@ body:hover {
     background-image: url("assets/bubble.jpg");
 }
 #city{
-    background-image: url("assets/city.jpg");
+    background-image: url("assets/city.PNG");
 }
+
 p {
     font-size: 1.2em;
     line-height: 1.6;
@@ -48,14 +49,14 @@ p {
     transition: 0.2s;
 }
 p:hover {
-    color: #950098;
+    color: #5b84ff;
     
     
     filter: blur(0px);
 }
 h1, h2 {
     transition: 0.2s;
-    color: #81a1ff;
+    color: #5b84ff;
     
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     /* filter: blur(3px); */
@@ -67,6 +68,11 @@ h1, h2 {
 #sss{
     font-size: 1em;
     color: rgb(172, 216, 255);
+    filter: blur(0px);
+}
+#bbb{
+    font-size: 1em;
+    color: rgb(0, 25, 47);
     filter: blur(0px);
 }
  @keyframes coolAnimation {
@@ -134,7 +140,7 @@ h1, h2 {
 
 .option-btn:hover {
     background: rgba(255, 255, 255, 0.3);
-    color: #950098;
+    color: #000a98;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }

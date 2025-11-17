@@ -1,0 +1,97 @@
+/* --- 1. 修复父容器 .text --- */
+.text {
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.5s ease;
+    cursor: pointer;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw; /* 保持90vw宽度 */
+
+    /* 关键修复 1: 
+      把 text-align: center 移到这里，让它来居中内部的元素 
+    */
+    text-align: center; 
+
+    /* 关键修复 2: 
+      让不可见的元素不响应鼠标，防止它们“挡住”可见元素
+    */
+    pointer-events: none;
+    visibility: hidden; /* 辅助 opacity */
+}
+
+.text.active {
+    opacity: 1;
+    pointer-events: auto;  /* 只让“激活”的这一个响应鼠标 */
+    visibility: visible;
+}
+
+
+/* --- 2. 修复 #title --- */
+#title {
+    font-family: "Reenie Beanie", cursive;
+    font-weight: 300;
+    color: rgb(242, 242, 242);
+    font-style: normal;
+    /* text-align: center; <-- 已删除，移至父级 .text */
+    margin-top: 30vh;
+    font-size: 40vh;
+    transition: 1s;
+    filter: blur(0px);
+
+    /* 关键修复 3: 
+      将 h1 从“块级”变为“行内块级”，
+      使其宽度“收缩”以贴合文字内容
+    */
+    display: inline-block; 
+}
+
+#title:hover {
+    filter: blur(10px);
+}
+
+
+/* --- 3. 修复 .subtitle 和 #description --- */
+.subtitle {
+    font-family: "Reenie Beanie", cursive;
+    font-weight: 300;
+    color: rgb(242, 242, 242);
+    font-style: normal;
+    /* text-align: center; <-- 已删除，移至父级 .text */
+    font-size: 5vh;
+    margin-top: 30vh;
+    transition: 1s;
+    filter: blur(0px);
+
+    /* 关键修复 3 (同样应用) */
+    
+}
+/* .subtitle:hover 规则已被删除 */
+
+
+#description {
+    font-family: "Reenie Beanie", cursive;
+    font-weight: 300;
+    color: rgb(242, 242, 242);
+    font-style: normal;
+    /* text-align: center; <-- 已删除，移至父级 .text */
+    font-size: 2vh;
+    margin-top: 5vh;
+    transition: 1s;
+    filter: blur(0px);
+
+    /* 关键修复 3 (同样应用) */
+   
+}
+/* #description:hover 规则已被删除 */
+
+/* 你的 body 样式 (保持不变) */
+body {
+    background-image: url("proj3Assets/proj3Background.png");
+    background-size: cover;
+    background-attachment: scroll;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* 建议加上这个，防止大字体导致出现滚动条 */
+}

@@ -1,4 +1,3 @@
-/* --- 1. 修复父容器 .text --- */
 .text {
     opacity: 0;
     position: absolute;
@@ -6,43 +5,36 @@
     cursor: pointer;
     left: 50%;
     transform: translateX(-50%);
-    width: 90vw; /* 保持90vw宽度 */
+    width: 90vw; 
 
-    /* 关键修复 1: 
-      把 text-align: center 移到这里，让它来居中内部的元素 
-    */
+    
     text-align: center; 
 
-    /* 关键修复 2: 
-      让不可见的元素不响应鼠标，防止它们“挡住”可见元素
-    */
+    
     pointer-events: none;
-    visibility: hidden; /* 辅助 opacity */
+    visibility: hidden; 
 }
 
 .text.active {
     opacity: 1;
-    pointer-events: auto;  /* 只让“激活”的这一个响应鼠标 */
+    pointer-events: auto;  
     visibility: visible;
 }
 
 
-/* --- 2. 修复 #title --- */
+
 #title {
     font-family: "Reenie Beanie", cursive;
     font-weight: 300;
     color: rgb(242, 242, 242);
     font-style: normal;
-    /* text-align: center; <-- 已删除，移至父级 .text */
+    
     margin-top: 30vh;
     font-size: 40vh;
     transition: 1s;
     filter: blur(0px);
 
-    /* 关键修复 3: 
-      将 h1 从“块级”变为“行内块级”，
-      使其宽度“收缩”以贴合文字内容
-    */
+    
     display: inline-block; 
 }
 
@@ -51,41 +43,51 @@
 }
 
 
-/* --- 3. 修复 .subtitle 和 #description --- */
+
 .subtitle {
     font-family: "Reenie Beanie", cursive;
     font-weight: 300;
     color: rgb(242, 242, 242);
     font-style: normal;
-    /* text-align: center; <-- 已删除，移至父级 .text */
+   
+    font-size: 10vh;
+    margin-top: 30vh;
+    transition: 1s;
+    filter: blur(0px);
+
+   
+    
+}
+
+.subtitle2{
+
+font-family: "Reenie Beanie", cursive;
+    font-weight: 300;
+    color: rgb(242, 242, 242);
+    font-style: normal;
+   text-align: center; 
     font-size: 5vh;
     margin-top: 30vh;
     transition: 1s;
     filter: blur(0px);
 
-    /* 关键修复 3 (同样应用) */
-    
 }
-/* .subtitle:hover 规则已被删除 */
-
 
 #description {
     font-family: "Reenie Beanie", cursive;
     font-weight: 300;
     color: rgb(242, 242, 242);
     font-style: normal;
-    /* text-align: center; <-- 已删除，移至父级 .text */
-    font-size: 2vh;
+    text-align: center; 
+    font-size: 5vh;
     margin-top: 5vh;
     transition: 1s;
     filter: blur(0px);
 
-    /* 关键修复 3 (同样应用) */
+    
    
 }
-/* #description:hover 规则已被删除 */
 
-/* 你的 body 样式 (保持不变) */
 body {
     background-image: url("proj3Assets/proj3Background.png");
     background-size: cover;
@@ -93,5 +95,114 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* 建议加上这个，防止大字体导致出现滚动条 */
+    overflow: hidden; 
+}
+#imgForlistenTo {
+    margin-top: 5vh;
+    transition: 0.3s ease-out;
+    animation: coolAnimation 6s infinite;
+}
+#imgForlistenTo:hover {
+    transform: scale(1.1);
+    opacity: 1;
+    animation: none;
+}
+@keyframes coolAnimation {
+    0% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
+#displayText {
+    font-family: "Reenie Beanie", cursive;
+    font-weight: 300;
+    color: rgb(242, 242, 242);
+    font-style: normal;
+   
+    font-size: 5vh;
+    margin-top: 40vh;
+    transition: 1s;
+    filter: blur(0px);
+    text-align: center; 
+}
+#displayText:hover {
+    filter: blur(5px);
+}
+#descriptionFadeIn {
+    font-family: "Reenie Beanie", cursive;
+    font-weight: 300;
+    color: rgb(242, 242, 242);
+    font-style: normal;
+    text-align: center; 
+    font-size: 5vh;
+    margin-top: 5vh;
+    transition: 1s;
+    filter: blur(0px);
+    animation: fadeIn 5s forwards;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+.button-container {
+     animation: fadeIn 5s forwards;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.option-btn {
+    cursor: url('assets/wind-rosecol.png'), auto;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-family: "Reenie Beanie", cursive;
+    font-weight: 300;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.option-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: #a7a7a7;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+#userInput {
+    font-family: "Reenie Beanie", cursive;
+    font-weight: 300;
+    font-size: 1.2em;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    /* border-radius: 50px; */
+    color: #ffffff;
+    outline: none;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    display: block;
+}
+
+#userInput::placeholder {
+    color: rgba(145, 145, 145, 0.7);
+    font-family: "Reenie Beanie", cursive;
+    font-weight: 300;
+}
+
+#userInput:focus {
+    background: rgba(255, 255, 255, 0.3);
+    color: #a7a7a7;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
 }

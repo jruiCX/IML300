@@ -6,12 +6,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src=“https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js”></script>
+    <title>whispers</title>
+    <!-- <script src=“https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js”></script> -->
     <link rel="stylesheet" href="proj3Style.css" />
 </head>
 <body>
-
+<audio autoplay loop>
+        <source src="proj3Assets/whisper.MP3" type="audio/mpeg">
+        
+        Your browser does not support the audio element.
+    </audio>
+    
     <div class="container">
         <script src="proj3JS.js"></script>
     <div class = "text active" data-index="0">    
@@ -23,10 +28,12 @@
         <h3 id = "description">A thought too fragile for the light of day. This is the sanctuary for those whispers.</h3>
     </div>
     <div class = "text" data-index="2">    
-        <h2 class = "subtitle">Oh, you hear, there are others nearby whispering some kind of story to you.</h2>
+        <h2 class = "subtitle2">Oh, you hear, there are others nearby whispering some kind of story to you.</h2>
+        <a href="proj3Page2.html"><img id= "imgForlistenTo"src="proj3Assets/soundd.png" alt="soundd" width="304"></a>
     </div>
     <div class = "text" data-index="3">    
-        <h2 class = "subtitle">Inspired? Moved? It's your turn. Add your voice to the chorus.</h2>
+        <h2 class = "subtitle2">You walked off in another direction,</h2>
+        <h2 id = "description">the whispering fading away.</h2>
     </div>
     
     </div>      

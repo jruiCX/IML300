@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>初始化数据</title>
+</head>
+<body>
+    <button onclick="uploadInitialData()">点击这里把 10 句 Whispers 上传到云端</button>
+    <div id="status"></div>
+
+    <script>
+        // 👇 填入你的 ID 和 Key
+        const BIN_ID = '692269b643b1c97be9beeb2a'; 
+        const API_KEY = '$2a$10$jUQViu8oab0a1mqad9wj0uo/9EeLVsctGZ94Xf9AxuEmNLOVB3Pz2';
+        const URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+
+        // 这里是你提供的原始数据
+        const initialData = {
+            "whispers": [
+                "I told the moon a secret I could never tell you. Now, I send its light your way as a silent apology.",
+                "To the person who finds this: you are stronger than you feel, and braver than you believe.",
+                "Today, I saw a complete stranger laugh, and it felt like a small, unexpected gift just for me.",
+                "I'm writing this from a city of eight million people, and I've never felt more alone.",
+                "Don't be afraid of your quiet. The most beautiful symphonies often begin in the silence.",
+                // "I still look for your shadow in crowded places, knowing I'll never find it.",
+                // "If you're reading this, know that a stranger somewhere is wishing you peace today.",
+                // "I wear a smile like armor every day. I wonder if anyone can tell it's getting heavy.",
+                // "I sent a message into the universe today, a secret hope. Maybe you're the one it reached.",
+                // "The world is loud. Your whisper matters. Thank you for leaving a piece of your story here."
+            ]
+        };
+
+        function uploadInitialData() {
+            document.getElementById('status').innerText = "正在上传...";
+            
+            fetch(URL, {
+                method: 'PUT', // 覆盖模式
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Master-Key': API_KEY
+                },
+                body: JSON.stringify(initialData)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.record) {
+                    document.getElementById('status').innerHTML = "✅ <b>上传成功！</b><br>云端现在已经有这10句话了。<br>现在可以去运行下面的【主网页代码】了。";
+                } else {
+                    document.getElementById('status').innerText = "❌ 失败，请检查 Key 权限";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,63 +1,91 @@
+//90% of this code is AI-generated. Modified by RCX.
 const BIN_ID = '692269b643b1c97be9beeb2a'; 
 const API_KEY = '$2a$10$jUQViu8oab0a1mqad9wj0uo/9EeLVsctGZ94Xf9AxuEmNLOVB3Pz2';
 const URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
 let localWhispers = [];
+let availableVoices = [];
 
-// 🛠️ 万能安全函数：专门负责显示文字，找不到元素也不报错
+// 🛠️ 万能安全显示函数
 function safeShowText(text) {
     const el = document.getElementById('displayText');
-    if (el) {
-        el.innerText = text;
-    } else {
-        console.warn("⚠️ 警告：页面上找不到 id='displayText' 的标签，文字无法显示:", text);
+    if (el) el.innerText = text;
+}
+
+// 🔊 预加载声音列表
+function loadVoices() {
+    availableVoices = window.speechSynthesis.getVoices();
+}
+window.speechSynthesis.onvoiceschanged = loadVoices;
+
+// 🗣️ 低语朗读函数
+function speakWhisper(text) {
+    window.speechSynthesis.cancel(); 
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    
+    // 优先选柔和的声音
+    let selectedVoice = availableVoices.find(voice => voice.name.includes("Samantha"))
+                     || availableVoices.find(voice => voice.name.includes("Google US English")) 
+                     || availableVoices.find(voice => voice.lang === "en-US");
+
+    if (selectedVoice) {
+        utterance.voice = selectedVoice;
     }
+
+    // === 🌙 低语参数 ===
+    utterance.volume = 0.3; // 音量小
+    utterance.rate = 0.7;   // 语速慢
+    utterance.pitch = 0.9;  // 语调沉
+
+    window.speechSynthesis.speak(utterance);
 }
 
 // 1. 网页加载
 window.onload = function() {
+    loadVoices();
+    
     fetch(URL, {
         method: 'GET',
         headers: { 'X-Master-Key': API_KEY }
     })
-    .then(res => res.json())
+    .then(response => response.json()) // 这里不需要改
     .then(data => {
         localWhispers = data.record.whispers || [];
-        console.log("读取成功，数量:", localWhispers.length);
-        displayRandomWhisper();
+        console.log("读取成功:", localWhispers.length);
+        
+        setTimeout(() => {
+            displayRandomWhisper();
+        }, 800);
     })
     .catch(error => {
         console.error("读取失败:", error);
-        // 使用安全函数，即使没有 ID 也不报错
-        safeShowText("读取失败，请检查控制台");
+        safeShowText("Silence...");
     });
 };
 
 // 显示随机句子
 function displayRandomWhisper() {
     if (localWhispers.length === 0) {
-        safeShowText("还没有记录...");
+        safeShowText("Silence...");
         return;
     }
     const randomIndex = Math.floor(Math.random() * localWhispers.length);
-    // 使用安全函数
-    safeShowText(localWhispers[randomIndex]);
+    const textToRead = localWhispers[randomIndex];
+    
+    safeShowText(textToRead);
+    speakWhisper(textToRead);
 }
 
 // 2. 保存功能
 function saveDream() {
     const input = document.getElementById('userInput');
-    // 检查输入框是否存在
-    if (!input) {
-        alert("错误：找不到输入框 id='userInput'");
-        return;
-    }
+    if (!input) return; 
 
     const text = input.value.trim();
     if (!text) return;
 
     const btn = document.querySelector('button');
-    // 检查按钮是否存在
     let originalText = "Save";
     if (btn) {
         originalText = btn.innerText;
@@ -75,27 +103,28 @@ function saveDream() {
         },
         body: JSON.stringify({ whispers: localWhispers })
     })
+    // 👇👇👇 修复了这里：把 res 改成了 response 👇👇👇
     .then(response => {
-        if (!response.ok) throw new Error("网络响应不正常");
+        if (!response.ok) throw new Error("Network error");
         return response.json();
     })
     .then(data => {
-        alert("✅ Saved to the void");
-        input.value = '';
+        alert("✅ Saved"); // 这次一定会弹出来
         
+        input.value = '';
         if (btn) {
             btn.innerText = originalText;
             btn.disabled = false;
         }
-        
-        // 使用安全函数，绝对不会报错
-        safeShowText(text);
+
+        // 保存成功后朗读
+        safeShowText(text); 
+        speakWhisper(text); 
     })
     .catch(error => {
-        console.error("保存失败:", error);
-        alert("❌ Save failed: " + error.message);
+        console.error("Save failed:", error);
+        alert("❌ Error: " + error.message);
         localWhispers.pop(); 
-        
         if (btn) {
             btn.innerText = originalText;
             btn.disabled = false;

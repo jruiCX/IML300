@@ -1,4 +1,4 @@
-//90% of this code is AI-generated. Modified by RCX.
+//70% of this part of code is AI-generated. Modified by RCX.
 const BIN_ID = '692269b643b1c97be9beeb2a'; 
 const API_KEY = '$2a$10$jUQViu8oab0a1mqad9wj0uo/9EeLVsctGZ94Xf9AxuEmNLOVB3Pz2';
 const URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
@@ -6,25 +6,25 @@ const URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 let localWhispers = [];
 let availableVoices = [];
 
-// 🛠️ 万能安全显示函数
+//万能安全显示函数
 function safeShowText(text) {
     const el = document.getElementById('displayText');
     if (el) el.innerText = text;
 }
 
-// 🔊 预加载声音列表
+
 function loadVoices() {
     availableVoices = window.speechSynthesis.getVoices();
 }
 window.speechSynthesis.onvoiceschanged = loadVoices;
 
-// 🗣️ 低语朗读函数
+//低语朗读函数
 function speakWhisper(text) {
     window.speechSynthesis.cancel(); 
 
     const utterance = new SpeechSynthesisUtterance(text);
     
-    // 优先选柔和的声音
+    //优先选柔和的声音
     let selectedVoice = availableVoices.find(voice => voice.name.includes("Samantha"))
                      || availableVoices.find(voice => voice.name.includes("Google US English")) 
                      || availableVoices.find(voice => voice.lang === "en-US");
@@ -33,7 +33,7 @@ function speakWhisper(text) {
         utterance.voice = selectedVoice;
     }
 
-    // === 🌙 低语参数 ===
+    //低语设置
     utterance.volume = 0.3; // 音量小
     utterance.rate = 0.7;   // 语速慢
     utterance.pitch = 0.9;  // 语调沉
@@ -49,7 +49,7 @@ window.onload = function() {
         method: 'GET',
         headers: { 'X-Master-Key': API_KEY }
     })
-    .then(response => response.json()) // 这里不需要改
+    .then(response => response.json()) 
     .then(data => {
         localWhispers = data.record.whispers || [];
         console.log("读取成功:", localWhispers.length);
@@ -103,13 +103,13 @@ function saveDream() {
         },
         body: JSON.stringify({ whispers: localWhispers })
     })
-    // 👇👇👇 修复了这里：把 res 改成了 response 👇👇👇
+   
     .then(response => {
         if (!response.ok) throw new Error("Network error");
         return response.json();
     })
     .then(data => {
-        alert("✅ Saved"); // 这次一定会弹出来
+        alert("✅ Saved"); 
         
         input.value = '';
         if (btn) {

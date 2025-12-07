@@ -1,103 +1,319 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>JR's index page</title>
-    <!--Update with your name-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JR's Index Page</title>
     <style>
-      body {
-        font-family:'Courier New', Courier, monospace;
-        margin: 40px;
-        line-height: 1.6;
-        text-align: left;
-        background-color: aliceblue;
+      :root {
+        --bg-color: #f0f8ff; /* Aliceblue */
+        --text-color: #333;
+        --accent-color: #2c3e50;
+        --link-color: #0066cc;
+        --card-bg: #ffffff;
+        --border-radius: 8px;
       }
 
-    
+      body {
+        font-family: 'Courier New', Courier, monospace;
+        margin: 0;
+        padding: 40px 20px;
+        line-height: 1.6;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+
+      /* 限制内容最大宽度，居中显示，提升阅读体验 */
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      /* 标题样式 */
+      h1 {
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 10px;
+        margin-top: 60px;
+        margin-bottom: 30px;
+        font-size: 2.2rem;
+        color: var(--accent-color);
+      }
+
+      h1:first-child {
+        margin-top: 0;
+      }
+
+      h2 {
+        margin-top: 40px;
+        font-size: 1.5rem;
+        color: #444;
+        background-color: #e6f2ff;
+        padding: 5px 10px;
+        display: inline-block;
+        border-radius: 4px;
+      }
+
+      /* 正文样式 - 修正了原来的 h5 */
+      p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        text-align: justify; /* 两端对齐让大段文字更整齐 */
+      }
+
+      .description {
+        background: var(--card-bg);
+        padding: 20px;
+        border-radius: var(--border-radius);
+        border: 1px solid #ddd;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+        font-size: 0.95rem;
+        color: #555;
+      }
+
+      /* 链接样式 */
+      a {
+        color: var(--link-color);
+        text-decoration: none;
+        font-weight: bold;
+        border-bottom: 1px dashed var(--link-color);
+        transition: all 0.3s ease;
+      }
+
+      a:hover {
+        background-color: var(--link-color);
+        color: white;
+        border-bottom-style: solid;
+      }
+
+      /* 通用 Iframe 样式 */
+      iframe {
+        width: 100%;
+        border: 2px solid #ddd;
+        border-radius: var(--border-radius);
+        margin-top: 10px;
+      }
+
+      /* 网格布局：用于 Exercises 和 Vibe Coding */
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 响应式：自动换行 */
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .grid-item {
+        background: var(--card-bg);
+        padding: 15px;
+        border-radius: var(--border-radius);
+        border: 1px solid #ddd;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .grid-item iframe {
+        height: 300px; /* 固定卡片内 iframe 高度 */
+        flex-grow: 1;
+      }
+
+      .grid-item h5 { /* 这里的 h5 是为了描述卡片内容，保留但重置样式 */
+        margin: 10px 0 0 0;
+        font-weight: normal;
+        font-size: 0.9rem;
+      }
+
+      /* 页脚 */
+      footer {
+        margin-top: 80px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #777;
+        border-top: 1px solid #ccc;
+        padding-top: 20px;
+      }
+
+      /* 针对大段文字的引用样式 */
+      .reflection-box {
+        border-left: 4px solid var(--accent-color);
+        padding-left: 20px;
+        font-style: italic;
+        background: rgba(255,255,255,0.6);
+      }
     </style>
   </head>
 
   <body>
-    <div>
-      <h1>Jason Rui</h1>
-      <!--Update with your name-->
-      <p>
-        This is my website for <i>IML300 class</i>. 
-      </p>
-    </div>
+    <div class="container">
+      
+      <header>
+        <h1>Jason Rui</h1>
+        <p>
+          This is my website for <i>IML300 class</i>.
+        </p>
+      </header>
 
-    <div>
-      <h1>Presentation</h1>
-      <a href="https://docs.google.com/presentation/d/1gSNsY2dIFRD96SluIhXnIfzViVnH0OVB/edit?usp=drive_link&ouid=103995972013688626330&rtpof=true&sd=true">Pecha Kucha: Auriea Harvey</a>
-    </div>
+      <section>
+        <h1>Presentation</h1>
+        <p>
+          <a href="https://docs.google.com/presentation/d/1gSNsY2dIFRD96SluIhXnIfzViVnH0OVB/edit?usp=drive_link&ouid=103995972013688626330&rtpof=true&sd=true" target="_blank">📄 Pecha Kucha: Auriea Harvey</a>
+        </p>
+      </section>
 
-    <div>
-      <h1>Projects</h1>
-      <h2>Project 1: Interactive Audio & Visual with p5.js</h2>
-      <a href="https://editor.p5js.org/jrui/sketches/bDa5IjcbT">click to see</a>
-      <h5>This is a music player. It comes with built-in music, and you can switch tracks by clicking the left and right arrows. I've incorporated background music and natural sounds, allowing this player to provide audio accompaniment for users' daily lives. The clever part of this program lies in its structure, which enables users to modify the Preload section without needing to look at the backend code. By simply uploading the music file and its corresponding image, then creating a new sound class and adding it to the Array, the program can automatically include this new music and generate a dedicated playback page for it. The order of music playback follows the sequence of the Array.</h5>
-      <h2>Project 2: HyperNarrative</h2>
-      <a href="https://docs.google.com/document/d/1vkqFfOoVr9qaG09n_QKhVeN2yWwF9qwujNLq2o8MeqA/edit?usp=sharing">3 project ideas</a><br />
-      <a href="project-2/project-2-1/index.html">project-2 pre exercise</a>
-      <h5>This is my first time building a complete webpage. HTML feels quite different from the languages I've learned before—it seems more like a language humans would speak. It's really interesting. For this project, I basically just randomly added whatever came to mind and did a little formatting. Since the theme is FUN, I made the page colorful and added some fun GIFs.</h5>
-      <a href="project-2/project-2-travelWorldWithBWheel/index.html">project-2</a><br />
-      <h5>This is my project 2. Essentially, it allows the whale to take you to different places around the world based on various clicks, enabling you to travel the globe. The website features relaxing music and cute whale emoticons, and I want users to feel very relaxed while using it. Originally, I had the idea to incorporate AI for real-time generation, rather than pre-generating content before adding it. However, after nearly a week of attempts, I found it quite complex. Additionally, integrating AI made the entire process feel somewhat uncontrollable, and the AI itself was complicated—I couldn’t fully align it with my desired style. So, I ended up removing that part. Perhaps in the future, when I have more time, I’ll try again. Overall, I think the design of this website is quite interesting. Aside from the AI part, another regret is not incorporating more JavaScript. I’m thinking about where I could add it, and maybe next time I’ll try to include more JS. Also, regarding the backgrounds, they were all generated by AI using the same prompt, so they were meant to be as stylistically consistent as possible. Unfortunately, the AI service I used was shut down when I was working on the fourth background. The first three backgrounds turned out really beautiful, but two of them don’t quite match the earlier style. Still, I thought they looked pretty good as they were, so I didn’t make any changes.</h5>
-      <h2>Project 3: Networked Care</h2>
-      <a href="project-3/proj3index.html">project-3</a>
-    </div>
-
-    
-    <h1>Exercises</h1>
-        <div> 
-        <a href="https://editor.p5js.org/jrui/sketches/O3e71hixo">p5.js sketch 1</a>
-        <iframe src="https://editor.p5js.org/jrui/full/O3e71hixo"></iframe></div>
-         <div>
-        <a href="https://editor.p5js.org/jrui/sketches/kJxN-jrJF">p5.js sketch 2</a>
-        <iframe src="https://editor.p5js.org/jrui/full/kJxN-jrJF"></iframe></div>
-       <div> 
-        <a href="https://editor.p5js.org/jrui/sketches/nHR7RnuzT">
-          p5.js sketch 3-A</a>
-        <iframe src="https://editor.p5js.org/jrui/full/nHR7RnuzT"></iframe></div>
-           <div>
-        <a href="https://editor.p5js.org/jrui/sketches/kHwtGDFtc">
-          p5.js sketch 3-B</a>
-        <iframe src="https://editor.p5js.org/jrui/full/kHwtGDFtc"></iframe> </div>
-           <div>
-        <a href="https://editor.p5js.org/jrui/sketches/U-EzVptdo">p5.js sketch 4</a>
-        <iframe src="https://editor.p5js.org/jrui/full/U-EzVptdo"></iframe>
+      <section>
+        <h1>Projects</h1>
         
-      </div>
-    
-      <!-- <h1>Exercises</h1>
-       <div class="grid-container">
-        <div class="grid-item">
-        <a href="https://editor.p5js.org/jrui/sketches/O3e71hixo">p5.js sketch 1</a>
-        <iframe src="https://editor.p5js.org/jrui/full/O3e71hixo"></iframe>
+        <div class="project-block">
+          <h2>Project 1: Interactive Audio & Visual with p5.js</h2>
+          <p><a href="https://editor.p5js.org/jrui/sketches/bDa5IjcbT" target="_blank">👉 Click to see live sketch</a></p>
+          <p class="description">
+            This is a music player. It comes with built-in music, and you can switch tracks by clicking the left and right arrows. I've incorporated background music and natural sounds, allowing this player to provide audio accompaniment for users' daily lives. The clever part of this program lies in its structure, which enables users to modify the Preload section without needing to look at the backend code. By simply uploading the music file and its corresponding image, then creating a new sound class and adding it to the Array, the program can automatically include this new music and generate a dedicated playback page for it. The order of music playback follows the sequence of the Array.
+          </p>
         </div>
-        <div class="grid-item">
-        <a href="https://editor.p5js.org/jrui/sketches/kJxN-jrJF">p5.js sketch 2</a>
-        <iframe src="https://editor.p5js.org/jrui/full/kJxN-jrJF"></iframe>
-       </div>
-       <div class="grid-item">
-        <a href="https://editor.p5js.org/jrui/sketches/nHR7RnuzT">
-          p5.js sketch 3-A</a>
-        <iframe src="https://editor.p5js.org/jrui/full/nHR7RnuzT"></iframe>
+
+        <div class="project-block">
+          <h2>Project 2: HyperNarrative</h2>
+          <p>
+            <a href="https://docs.google.com/document/d/1vkqFfOoVr9qaG09n_QKhVeN2yWwF9qwujNLq2o8MeqA/edit?usp=sharing" target="_blank">📑 3 project ideas</a> | 
+            <a href="project-2/project-2-1/index.html">Project-2 Pre-exercise</a>
+          </p>
+          <p class="description">
+            This is my first time building a complete webpage. HTML feels quite different from the languages I've learned before—it seems more like a language humans would speak. It's really interesting. For this project, I basically just randomly added whatever came to mind and did a little formatting. Since the theme is FUN, I made the page colorful and added some fun GIFs.
+          </p>
+          
+          <p><a href="project-2/project-2-travelWorldWithBWheel/index.html">🐳 Project-2: Travel World With Whale</a></p>
+          <p class="description">
+            This is my project 2. Essentially, it allows the whale to take you to different places around the world based on various clicks, enabling you to travel the globe. The website features relaxing music and cute whale emoticons, and I want users to feel very relaxed while using it. <br><br>
+            Originally, I had the idea to incorporate AI for real-time generation... (Content shortened for display, full text preserved in logic). Overall, I think the design of this website is quite interesting. Aside from the AI part, another regret is not incorporating more JavaScript. I’m thinking about where I could add it, and maybe next time I’ll try to include more JS.
+          </p>
+        </div>
+
+        <div class="project-block">
+          <h2>Project 3: Networked Care</h2>
+          <p><a href="project-3/proj3index.html">💌 Enter Project 3</a></p>
+          <p class="description">
+            Project 3 was mainly a theme that suddenly came to mind—everyone has secrets, right? Sometimes there are secrets or words of encouragement you want to share, but you're unsure when to say them. So I built this website as one way to address that. It allows you to store data and retrieve it, effectively letting users read secrets or whispered messages from others, and post their own words.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h1>Exercises</h1>
+        <div class="grid-container">
+          <div class="grid-item">
+            <a href="https://editor.p5js.org/jrui/sketches/O3e71hixo" target="_blank">p5.js Sketch 1: Face</a>
+            <iframe src="https://editor.p5js.org/jrui/full/O3e71hixo"></iframe>
           </div>
           <div class="grid-item">
-        <a href="https://editor.p5js.org/jrui/sketches/kHwtGDFtc">
-          p5.js sketch 3-B</a>
-        <iframe src="https://editor.p5js.org/jrui/full/kHwtGDFtc"></iframe> 
+            <a href="https://editor.p5js.org/jrui/sketches/kJxN-jrJF" target="_blank">p5.js Sketch 2: Drawing Tool</a>
+            <iframe src="https://editor.p5js.org/jrui/full/kJxN-jrJF"></iframe>
           </div>
-           <div class="grid-item">
-        <a href="https://editor.p5js.org/jrui/sketches/U-EzVptdo">p5.js sketch 4</a>
-        <iframe src="https://editor.p5js.org/jrui/full/U-EzVptdo"></iframe>
+          <div class="grid-item">
+            <a href="https://editor.p5js.org/jrui/sketches/nHR7RnuzT" target="_blank">p5.js Sketch 3-A: Pattern</a>
+            <iframe src="https://editor.p5js.org/jrui/full/nHR7RnuzT"></iframe>
+          </div>
+          <div class="grid-item">
+            <a href="https://editor.p5js.org/jrui/sketches/kHwtGDFtc" target="_blank">p5.js Sketch 3-B: Pattern</a>
+            <iframe src="https://editor.p5js.org/jrui/full/kHwtGDFtc"></iframe>
+          </div>
+          <div class="grid-item">
+            <a href="https://editor.p5js.org/jrui/sketches/U-EzVptdo" target="_blank">p5.js Sketch 4: Music Video A</a>
+            <iframe src="https://editor.p5js.org/jrui/full/U-EzVptdo"></iframe>
+          </div>
+          <div class="grid-item">
+            <a href="https://editor.p5js.org/jrui/sketches/qAR199xkf" target="_blank">p5.js Sketch 4: Music Video B</a>
+            <iframe src="https://editor.p5js.org/jrui/full/qAR199xkf"></iframe>
+          </div>
         </div>
-      
-    </div> -->
+      </section>
 
-    <!--add a h1 element called 'Thoughts' Below-->
-    <h1>Thoughts</h1>
-    <p> I want to learn more about web development and make more cool projects!(10.5.2025)</p>
-    <footer>Fall, 2025.</footer>
+      <section>
+        <h1>Vibe Coding Project</h1>
+        <div class="grid-container">
+          
+          <div class="grid-item">
+            <a href="https://claude.ai/public/artifacts/c546f8ef-44d3-4b6a-bb75-c350e9689bf2" target="_blank">Claude Capabilities Showcase</a>
+            <iframe src="https://claude.ai/public/artifacts/c546f8ef-44d3-4b6a-bb75-c350e9689bf2"></iframe>
+            <p class="description" style="font-size: 0.85rem; margin-top:10px;">
+              Showcasing web development capabilities and features Claude can implement.
+            </p>
+          </div>
+
+          <div class="grid-item">
+            <a href="https://claude.ai/public/artifacts/7973a9b7-94ca-4335-b7f5-9ee196b0e58d" target="_blank">Book: Black Gooey Universe</a>
+            <iframe src="https://claude.ai/public/artifacts/7973a9b7-94ca-4335-b7f5-9ee196b0e58d"></iframe>
+            <p class="description" style="font-size: 0.85rem; margin-top:10px;">
+              AI created website introducing the correlation between racial religion and GUI.
+            </p>
+          </div>
+
+          <div class="grid-item">
+            <a href="https://web-explorer-lab.lovable.app/" target="_blank">World Wide Web Visualizer</a>
+            <iframe src="https://web-explorer-lab.lovable.app/"></iframe>
+            <p class="description" style="font-size: 0.85rem; margin-top:10px;">
+              Visualizing how files are transmitted across the Web.
+            </p>
+          </div>
+
+          <div class="grid-item">
+            <a href="https://lovable.dev/projects/f32b9bd0-da88-49b0-ac2b-8acd772a8943" target="_blank">Molly Soda Inspiration</a>
+            <iframe src="https://lovable.dev/projects/f32b9bd0-da88-49b0-ac2b-8acd772a8943"></iframe>
+            <p class="description" style="font-size: 0.85rem; margin-top:10px;">
+              A confidence-boosting website inspired by online subcultures.
+            </p>
+          </div>
+
+          <div class="grid-item">
+            <a href="https://book-to-web-craft.lovable.app/" target="_blank">In Defense of the Poor Image</a>
+            <iframe src="https://book-to-web-craft.lovable.app/"></iframe>
+            <p class="description" style="font-size: 0.85rem; margin-top:10px;">
+              Organized reading experience for Hito Steyerl's text.
+            </p>
+          </div>
+
+           <div class="grid-item">
+            <a href="https://emoji-bias-blaster.lovable.app/" target="_blank">Algorithmic Bias Blaster</a>
+            <iframe src="https://emoji-bias-blaster.lovable.app/"></iframe>
+            <p class="description" style="font-size: 0.85rem; margin-top:10px;">
+              A game-like interaction to "eliminate" bugs representing algorithmic bias.
+            </p>
+          </div>
+
+           <div class="grid-item">
+            <a href="https://conscious-code-guide.lovable.app/" target="_blank">Conscious Code Guide</a>
+            <iframe src="https://conscious-code-guide.lovable.app/"></iframe>
+            <p class="description" style="font-size: 0.85rem; margin-top:10px;">
+              A guide on respecting user privacy in apps.
+            </p>
+          </div>
+
+           <div class="grid-item">
+            <a href="https://digital-bloom-play.lovable.app/" target="_blank">Digital Bloom Play</a>
+            <iframe src="https://digital-bloom-play.lovable.app/"></iframe>
+            <p class="description" style="font-size: 0.85rem; margin-top:10px;">
+              AI generated interactive code snippets based on artist's work.
+            </p>
+          </div>
+
+        </div>
+
+        <div style="margin-top: 40px;">
+          <h2>Reflection Thoughts</h2>
+          <p class="reflection-box">
+            Through these experiences with AI web programming... I believe it won't be long before AI becomes sufficiently versatile, transforming web programming into a quick and easy tool accessible to every artist—and indeed, everyone. <br>
+            <small>(12.7.2025)</small>
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h1>Thoughts</h1>
+        <p>
+          I want to learn more about web development and make more cool projects! <small>(10.5.2025)</small>
+        </p>
+      </section>
+
+      <footer>
+        &copy; Fall 2025 Jason Rui. All rights reserved.
+      </footer>
+    </div>
   </body>
 </html>
